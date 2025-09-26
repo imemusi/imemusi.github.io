@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrick Memusi - Resume</title>
+    <style>
+        /* Page + typography to match the provided single-page template */
+        @page {
+            margin: 0.5in;
+            size: letter;
+        }
+        :root {
+            --text-size: 11pt;
+            --heading-size: 12pt;
+            --name-size: 26pt;
+        }
+        body {
+            font-family: "Calibri", "Helvetica Neue", Arial, sans-serif;
+            font-size: var(--text-size);
+            line-height: 1.3;
+            color: #000;
+            max-width: 780px;
+            margin: 0.6in auto;
+            padding: 0;
+            background-color: #fff;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+
+        /* Header: centered name, contact line with dot separators */
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+        .header h1 {
+            margin: 0 0 4px 0;
+            font-size: var(--name-size);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .header p {
+            margin: 0;
+            color: #000;
+            font-size: var(--text-size);
+            white-space: nowrap;
+        }
+
+        /* Section headings with rule below */
+        .section { margin-bottom: 16px; }
+        .section h3 {
+            font-size: var(--heading-size);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 0 0 6px 0;
+            padding: 0 0 4px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        /* Entry rows with right-aligned meta (city/dates) */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .flex-container .right {
+            text-align: right;
+            white-space: nowrap;
+            color: #000;
+            font-style: normal;
+        }
+
+        .entry { margin-bottom: 10px; }
+        .entry h4 { margin: 0; font-size: 11.5pt; font-weight: 700; }
+        .entry p { margin: 0; }
+
+        /* Lists tightened to fit single page */
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin: 3px 0; }
+
+        /* Skills line list mimics template bullets */
+        .skills-list { list-style: disc; padding-left: 18px; }
+        .skills-list li { margin: 2px 0; }
+
+        strong { font-weight: 700; }
+
+        /* Print: ensure one page and avoid breaks within entries */
+        .entry, .flex-container { break-inside: avoid; page-break-inside: avoid; }
+        @media print {
+            body { margin: 0.5in; }
+            .header { margin-bottom: 12px; padding-bottom: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Patrick Memusi</h1>
+        <p>Evanston, IL • (773) 765-8553 • patrickmemusi2028@u.northwestern.edu • <a href="https://linkedin.com/in/patrick-memusi">linkedin.com/in/patrick-memusi</a> • <a href="https://github.com/your-username">github.com/your-username</a></p>
+    </div>
+
+    <div class="section">
+        <h3>Education</h3>
+        <div class="entry">
+            <div class="flex-container">
+                <h4><strong>Northwestern University</strong></h4>
+                <div class="right">Expected Graduation: June 2028</div>
+            </div>
+            <div class="flex-container">
+                <p><em>Bachelor of Science in Computer Science</em></p>
+                <div class="right">Evanston, IL</div>
+            </div>
+            <ul>
+                <li><strong>Relevant coursework:</strong> Data Structures & Algorithms, Design Thinking & Communication, Discrete Mathematics, Artificial Intelligence</li>
+                <li><strong>GPA:</strong> 3.73 / 4.00</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Skills & Certifications</h3>
+        <ul class="skills-list">
+            <li><strong>Languages:</strong> Python, C++, C, JavaScript, HTML/CSS, Bash</li>
+            <li><strong>Concepts:</strong> AI & Prompt Engineering, Full-Stack Web Development, Object-Oriented Programming, Network Security</li>
+            <li><strong>AI/ML:</strong> PyTorch, TensorFlow, Scikit-learn, Generative AI APIs</li>
+            <li><strong>Certifications:</strong> Kaggle Gen AI, Codepath Cybersecurity Honors</li>
+            <li><strong>Tools:</strong> Docker, Git, VS Code, Wireshark, Nmap</li>
+            <li><strong>Operating Systems:</strong> Windows, MacOS, Linux (Ubuntu)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Projects</h3>
+        <div class="entry">
+            <h4>AI Open Source Capstone</h4>
+            <ul>
+                <li>Developed and trained a natural language processing model to summarize technical articles, achieving an 85% ROUGE score.</li>
+                <li>Engineered a data pipeline to process and clean a dataset of over 10,000 articles for model training.</li>
+                <li><strong>Utilized Languages/Tools:</strong> Python, PyTorch, Git, Docker</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <h4>How2 Mobile Application</h4>
+            <ul>
+                <li>Designed and built a full-stack mobile app that uses a generative AI model to create educational 'how-to' video scripts from user prompts.</li>
+                <li>Implemented a clean, intuitive front-end allowing users to easily generate, edit, and share content.</li>
+                <li><strong>Utilized Languages/Tools:</strong> JavaScript, React Native, Firebase, Generative AI APIs</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <h4>Cybersecurity Assessment Report</h4>
+            <ul>
+                <li>Performed a comprehensive security audit on a simulated corporate network, identifying and documenting critical vulnerabilities.</li>
+                <li>Conducted penetration testing exercises, including network scanning and vulnerability exploitation, to assess system resilience.</li>
+                <li><strong>Utilized Tools:</strong> Nmap, Wireshark, Metasploit</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Experience</h3>
+        <div class="entry">
+            <div class="flex-container">
+                <h4><strong>Performance and Satellite Attendant</strong> | Norris University Center</h4>
+                <div class="right">September 2024 – Present</div>
+            </div>
+            <ul>
+                <li>Managed event setups, provided technical support, and collaborated with a team to maintain facilities for 20+ student organizations weekly.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Leadership & Affiliations</h3>
+        <div class="entry">
+             <div class="flex-container">
+                <h4><strong>Club Coordinator</strong> | Rotary Club Of JKUAT</h4>
+                <div class="right">September 2023 – August 2024</div>
+            </div>
+            <ul>
+                <li>Organized 30+ meetings and 10+ community events, and led a recruitment drive that onboarded 100+ new members.</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="flex-container">
+                <h4><strong>Team Captain</strong> | Elma School Kamonong Soccer Club</h4>
+                <div class="right">January 2020 – March 2021</div>
+            </div>
+            <ul>
+                <li>Led a 21-member team through practices and conditioning, resulting in a championship victory in the 2020 Regionals League Cup.</li>
+            </ul>
+        </div>
+         <p><strong>Affiliations:</strong> Member of DISC Club Northwestern, Tinkerer at The Garage at Northwestern</p>
+    </div>
+
+</body>
+</html>
+
