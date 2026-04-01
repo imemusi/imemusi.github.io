@@ -1,7 +1,528 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting…</title>
-<meta http-equiv="refresh" content="0; url=resume.html">
-<link rel="canonical" href="resume.html">
-<p>If you are not redirected automatically, <a href="resume.html">view the resume here</a>.</p>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick Imemusi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --ink: #1a0a00;
+    --muted: #7a3e1e;
+    --rule: #d4622a;
+    --bg: #FF6B35;
+    --accent: #1a0a00;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  nav .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+
+  nav ul a {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero { margin-bottom: 100px; }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    max-width: 400px;
+    line-height: 1.9;
+  }
+
+  .hero-links {
+    margin-top: 32px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* SECTIONS */
+  section { margin-bottom: 80px; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .about-text span { color: var(--accent); font-style: italic; }
+
+  .about-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .about-meta-item {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .about-meta-item strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 2px;
+    letter-spacing: 0.03em;
+  }
+
+  /* EXPERIENCE */
+  .exp-item { margin-bottom: 40px; }
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 16px;
+  }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+  }
+
+  .exp-date {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-company {
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .exp-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* PROJECTS */
+  .project-item {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-start: start;
+  }
+
+  .project-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .project-stack {
+    font-size: 0.62rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .project-link {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    align-self: start;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .project-link:hover { color: var(--ink); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .skill-group-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  /* CERTS */
+  .cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    gap: 16px;
+  }
+
+  .cert-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .cert-name {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cert-date {
+    font-size: 0.65rem;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 100px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  footer .footer-links { display: flex; gap: 20px; }
+
+  footer a {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 480px) {
+    body { padding: 48px 20px 80px; }
+    nav { margin-bottom: 64px; }
+    .hero { margin-bottom: 64px; }
+    .skills-grid { grid-template-columns: 1fr; gap: 24px; }
+    .exp-header { flex-direction: column; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">P.I.</a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1 class="hero-name">Patrick<br><em>Imemusi</em></h1>
+  <p class="hero-desc">Backend engineer. CS sophomore at Northwestern building for scale — distributed systems, fintech, and the infrastructure that holds it together.</p>
+  <div class="hero-links">
+    <a href="mailto:imemusi@u.northwestern.edu">Email</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="#">Resume ↓</a>
+  </div>
+</div>
+
+<section id="about">
+  <p class="section-label">About</p>
+  <p class="about-text">
+    I build <span>reliable backend systems</span> and love the challenge of making software fast, scalable, and maintainable. Based in Evanston, IL. GPA 3.6.
+  </p>
+  <div class="about-meta">
+    <div class="about-meta-item">
+      <strong>Northwestern University</strong>
+      B.S. Computer Science, Minor in Filming · Class of 2028
+    </div>
+    <div class="about-meta-item">
+      <strong>Roles</strong>
+      ColorStack Exec Board · IEEE Project Engineer
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <p class="section-label">Experience</p>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-role">Backend Engineering Intern</span>
+      <span class="exp-date">2024</span>
+    </div>
+    <p class="exp-company">Alphius</p>
+    <p class="exp-desc">Built and shipped backend services in a production environment. Worked across API design, database optimization, and service reliability.</p>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-role">Executive Board — Portfolio Development</span>
+      <span class="exp-date">2024 – Present</span>
+    </div>
+    <p class="exp-company">ColorStack at Northwestern</p>
+    <p class="exp-desc">Lead portfolio development workshops for CS students. Help peers build technical projects, refine resumes, and prepare for recruiting cycles.</p>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-role">Project Engineer</span>
+      <span class="exp-date">2024 – Present</span>
+    </div>
+    <p class="exp-company">IEEE Northwestern</p>
+    <p class="exp-desc">Collaborate on engineering projects, contribute to hardware-software integration efforts, and support club technical initiatives.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">Projects</p>
+
+  <div class="project-item">
+    <div>
+      <p class="project-name">spent?</p>
+      <p class="project-stack">Node.js · PostgreSQL · React</p>
+      <p class="project-desc">Personal finance tracker built to surface spending patterns and make budgeting less painful.</p>
+    </div>
+    <a class="project-link" href="https://github.com/" target="_blank">↗</a>
+  </div>
+
+  <div class="project-item">
+    <div>
+      <p class="project-name">Northwestern Python Interpreter</p>
+      <p class="project-stack">C/C++ · Linux · Docker</p>
+      <p class="project-desc">Full Python interpreter built from scratch across four phases: lexer, parser, evaluator, and error handler. Deployed on Linux with Docker.</p>
+    </div>
+    <a class="project-link" href="https://github.com/" target="_blank">↗</a>
+  </div>
+
+  <div class="project-item">
+    <div>
+      <p class="project-name">Trip Planner API</p>
+      <p class="project-stack">Racket · DSSL2 · Dijkstra's · A*</p>
+      <p class="project-desc">Graph-based trip planning engine using Dijkstra's and A* algorithms for optimal route computation.</p>
+    </div>
+    <a class="project-link" href="https://github.com/" target="_blank">↗</a>
+  </div>
+
+  <div class="project-item">
+    <div>
+      <p class="project-name">iShareMyTaste</p>
+      <p class="project-stack">React · Node.js · PostgreSQL · Spotify API</p>
+      <p class="project-desc">Social platform for cultural exchange through music. Integrates Spotify API for real-time listening data and playlist sharing.</p>
+    </div>
+    <a class="project-link" href="https://github.com/" target="_blank">↗</a>
+  </div>
+
+  <div class="project-item">
+    <div>
+      <p class="project-name">Chatbox</p>
+      <p class="project-stack">Electron · JavaScript · Open Source</p>
+      <p class="project-desc">Open-source desktop AI chat client. Contributed features and bug fixes to the upstream repository.</p>
+    </div>
+    <a class="project-link" href="https://github.com/" target="_blank">↗</a>
+  </div>
+</section>
+
+<section id="skills">
+  <p class="section-label">Stack</p>
+  <div class="skills-grid">
+    <div>
+      <p class="skill-group-label">Languages</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Racket</span>
+        <span class="skill-tag">x86-64 ASM</span>
+      </div>
+    </div>
+    <div>
+      <p class="skill-group-label">Backend</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+    <div>
+      <p class="skill-group-label">Infrastructure</p>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+    <div>
+      <p class="skill-group-label">Frontend</p>
+      <div class="skill-tags">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-label">Certifications</p>
+  <div class="cert-item">
+    <span class="cert-name">AWS Certified Cloud Practitioner (CLF-C02)</span>
+    <span class="cert-date">Mar 2026</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">Linux Essentials (010-160)</span>
+    <span class="cert-date">Feb 2026</span>
+  </div>
+</section>
+
+<footer id="contact">
+  <span>Patrick Imemusi · Evanston, IL</span>
+  <div class="footer-links">
+    <a href="mailto:imemusi@u.northwestern.edu">Email</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
